@@ -1,0 +1,16 @@
+{% extends 'base.c.twig' %}
+{% block variables %}
+
+	{% for int in i %}
+
+		int int{{ loop.index0 }} = {{ int }};
+
+	{% endfor %}
+
+{% endblock %}
+{% block main %}
+
+	sleep(2);
+	fprintf(r, "{{ w|map(v => '%d ' ~ v)|join(', ') }}", {{ i|map((v, x) => 'int' ~ x)|join(', ') }});
+
+{% endblock %}

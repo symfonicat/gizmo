@@ -1,0 +1,30 @@
+{% block includes %}
+
+#include <stdio.h>
+#include <unistd.h>
+
+{% endblock %}
+
+int main(void) {
+
+	freopen("/dev/null", "w", stdout);
+	freopen("/dev/null", "w", stderr);
+
+	char result[] = "{{ r }}";
+
+	FILE *r;
+
+	r = fopen(result, "w");
+	if (r == NULL) {
+		return 1;
+	}
+
+	{% block variables %}
+	{% endblock %}
+
+	{% block main %}
+	{% endblock %}
+
+	fclose(r);
+	return 0;
+}
